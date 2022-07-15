@@ -1,4 +1,4 @@
-import { getInput, getMultilineInput } from '@actions/core'
+import {getInput, getMultilineInput} from '@actions/core'
 import inputName from '../constants/InputName'
 
 interface InputData {

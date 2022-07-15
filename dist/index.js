@@ -80,15 +80,20 @@ function run() {
             (0, logger_1.default)('StartUp');
             const input = (0, parseInput_1.default)();
             const { ghToken } = input;
-            const { context, getOctokit } = github;
-            const pull_number = ((_a = context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number) || 0;
             (0, logger_1.default)('--------');
             (0, logger_1.default)(github.context);
             (0, logger_1.default)('--------');
             (0, logger_1.default)(input);
             (0, logger_1.default)('--------');
-            const ocktokit = getOctokit(ghToken);
-            yield ocktokit.rest.issues.createComment(Object.assign(Object.assign({}, context.repo), { issue_number: pull_number, body: 'test' }));
+            try {
+                const { context, getOctokit } = github;
+                const pull_number = ((_a = context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number) || 0;
+                const ocktokit = getOctokit(ghToken);
+                yield ocktokit.rest.issues.createComment(Object.assign(Object.assign({}, context.repo), { issue_number: pull_number, body: 'test' }));
+            }
+            catch (e) {
+                (0, logger_1.default)(e);
+            }
             core.setOutput('OUTPUT_MD', 'test');
         }
         catch (error) {
