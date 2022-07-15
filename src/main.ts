@@ -1,16 +1,29 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import github, { getOctokit } from '@actions/github'
+import log from './logger'
+import parseInput from './utils/parseInput'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+    log('StartUp')
+    const input = parseInput()
+    const { ghToken } = input
+    const { context } = github
+    const pull_number = context.payload.pull_request?.number || 0
+    log('--------')
+    log(github.context)
+    log('--------')
+    log(input)
+    log('--------')
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const ocktokit = getOctokit(ghToken)
+    await ocktokit.rest.issues.createComment({
+      ...context.repo,
+      issue_number: pull_number,
+      body: 'test'
+    })
 
-    core.setOutput('time', new Date().toTimeString())
+    core.setOutput('OUTPUT_MD', 'test')
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

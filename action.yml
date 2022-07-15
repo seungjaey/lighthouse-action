@@ -1,11 +1,24 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'lighthouse-action'
+description: 'lighthouse-action'
+author: 'seungjaey'
+
 inputs:
-  milliseconds: # change this
+  INPUT_URL_PREFIX:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'URL Prefix (ex: http://localhost:3000)'
+
+  INPUT_URL_LIST:
+    required: true
+    description: 'Test url list'
+
+  INPUT_GH_TOKEN:
+    required: false
+    description: 'Github Token'
+
+outputs:
+  OUTPUT_MD:
+    description: 'Lighthouse Report MD Format string'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
