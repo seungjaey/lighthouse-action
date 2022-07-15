@@ -100,3 +100,6 @@ lib/**/*
 
 # Jetbrain
 .idea/
+
+# lighthouse-result
+/lighthouse-result

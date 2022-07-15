@@ -27,4 +27,4 @@ jobs:
             [상품상세] 멀티 콘텐츠__SEP__/goods/5094163
             [상품상세] 옵션형 콘텐츠__SEP__/goods/1000001181 
             [상품상세] 캘린더형 콘텐츠__SEP__/goods/1000001210
-          INPUT_GH_TOKEN: 123412341234
+          INPUT_GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
