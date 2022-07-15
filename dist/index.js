@@ -18,14 +18,14 @@ exports.default = InputName;
 /***/ }),
 
 /***/ 1856:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 
+// import {info} from '@actions/core'
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __nccwpck_require__(2186);
 function log(target) {
-    (0, core_1.debug)(JSON.stringify(target));
+    console.log(target);
 }
 exports.default = log;
 

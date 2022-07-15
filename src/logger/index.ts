@@ -1,5 +1,5 @@
-import {debug} from '@actions/core'
+// import {info} from '@actions/core'
 
 export default function log(target: unknown): void {
-  debug(JSON.stringify(target))
+  console.log(target)
 }
