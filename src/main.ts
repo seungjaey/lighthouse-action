@@ -7,8 +7,8 @@ async function run(): Promise<void> {
   try {
     log('StartUp')
     const input = parseInput()
-    const {ghToken} = input
-    const {context,getOctokit} = github
+    const { ghToken } = input
+    const { context, getOctokit } = github
     const pull_number = context.payload.pull_request?.number || 0
     log('--------')
     log(github.context)

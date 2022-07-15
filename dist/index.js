@@ -70,7 +70,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
-const github_1 = __importStar(__nccwpck_require__(5438));
+const github = __importStar(__nccwpck_require__(5438));
 const logger_1 = __importDefault(__nccwpck_require__(1856));
 const parseInput_1 = __importDefault(__nccwpck_require__(7382));
 function run() {
@@ -80,14 +80,14 @@ function run() {
             (0, logger_1.default)('StartUp');
             const input = (0, parseInput_1.default)();
             const { ghToken } = input;
-            const { context } = github_1.default;
+            const { context, getOctokit } = github;
             const pull_number = ((_a = context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.number) || 0;
             (0, logger_1.default)('--------');
-            (0, logger_1.default)(github_1.default.context);
+            (0, logger_1.default)(github.context);
             (0, logger_1.default)('--------');
             (0, logger_1.default)(input);
             (0, logger_1.default)('--------');
-            const ocktokit = (0, github_1.getOctokit)(ghToken);
+            const ocktokit = getOctokit(ghToken);
             yield ocktokit.rest.issues.createComment(Object.assign(Object.assign({}, context.repo), { issue_number: pull_number, body: 'test' }));
             core.setOutput('OUTPUT_MD', 'test');
         }
