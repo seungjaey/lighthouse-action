@@ -21,4 +21,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          milliseconds: 1000
+          INPUT_URL_PREFIX: http://localhost:3000
+          INPUT_URL_LIST: |
+            [상품상세] 싱글 콘텐츠__SEP__/goods/5063942
+            [상품상세] 멀티 콘텐츠__SEP__/goods/5094163
+            [상품상세] 옵션형 콘텐츠__SEP__/goods/1000001181 
+            [상품상세] 캘린더형 콘텐츠__SEP__/goods/1000001210
+          INPUT_GH_TOKEN: 123412341234
